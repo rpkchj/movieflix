@@ -1,17 +1,27 @@
 import React from 'react'
 import "./moviecard.css"
+import { IoStarSharp } from "react-icons/io5";
 
-const MovieCard = () => {
+
+
+const MovieCard = ({title, summary, movieBanner, popularity}) => {
+
+  const limitCharaters = (string, limit = 15) => {
+    return string.length < limit? string.substring(0, limit) :`${string.substring(0, limit)}...`;
+  };
+
   return (
     <>
-    <div class="container">
+
   <div class="cellphone-container">    
       <div class="movie">       
-        <div class="movie-img"></div>
+        <div class="movie-img">
+          <img alt='banner' src={`https://image.tmdb.org/t/p/original/${movieBanner}`} className='image_banner'/>
+        </div>
         <div class="text-movie-cont">
           <div class="mr-grid">
             <div class="col1">
-              <h1>Interstellar</h1>
+              <h1 title={title}>{limitCharaters(title)}</h1>
               <ul class="movie-gen">
                 <li>PG-13  /</li>
                 <li>2h 49min  /</li>
@@ -25,27 +35,26 @@ const MovieCard = () => {
             </div>
             <div class="col2">
                <ul class="movie-likes">
-                <li><i class="material-icons">&#xE813;</i>124</li>
-                <li><i class="material-icons">&#xE813;</i>3</li>
+                <li className='movie_votes'><IoStarSharp size={17}/><p>{parseInt(popularity)}</p></li>
+                
               </ul>
             </div>
           </div>
           <div class="mr-grid">
-            <div class="col1">
-              <p class="movie-description">A group of elderly people are giving interviews about having lived in a climate of crop blight and constant dust reminiscent of The Great 
-              Depression of the 1930's. The first one seen is an elderly woman stating her father was a farmer, but did not start out that way. </p>
+            <div class="col1 fade_hide_extra">
+              <p class="movie-description">{summary}</p>
             </div>
           </div>
-          <div class="mr-grid actors-row">
+          {/* <div class="mr-grid actors-row">
             <div class="col1">
               <p class="movie-actors">Matthew McConaughey, Anne Hathaway, Jessica Chastain</p>
             </div>
-          </div>
+          </div> */}
         
         </div>
       </div>
   </div>
-</div>
+
 
 </>
   )

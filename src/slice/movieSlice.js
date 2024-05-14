@@ -7,9 +7,19 @@ const initialState = {
 const movieSlice = createSlice({
     name: "movieSlice",
     initialState,
-    reducers:{}
+    reducers:{
+        storeMovies: (state, {payload}) => {
+            state.movies = payload
+        },
+        storeOlderMovies: (state, {payload}) => {
+            state.movies = [...payload, ...state.movies]
+        },
+        storeNewerMovies: (state, {payload}) => {
+            state.movies = [...state.movies, ...payload]
+        }
+    }
 })
 
-// export const {} = movieSlice.actions
+export const {storeMovies, storeNewerMovies, storeOlderMovies} = movieSlice.actions
 
 export default movieSlice.reducer

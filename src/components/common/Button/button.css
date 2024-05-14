@@ -1,0 +1,27 @@
+.button_common{
+    background: #fe4141;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 0.2rem 0.3rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button_outline{
+    background: transparent;
+    color: white;
+    border: 1px solid #fe4141;
+    outline: none;
+    border-radius: 5px;
+    padding: 0.2rem 0.3rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button_common:active{
+    background: #fe4141c2;
+}

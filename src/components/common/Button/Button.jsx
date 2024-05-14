@@ -1,9 +1,9 @@
 import React from 'react'
 import "./button.css"
 
-const Button = () => {
+const Button = ({title, onButtonClick, isSelected}) => {
   return (
-    <div>Button</div>
+    <button onClick={onButtonClick} className={isSelected ? 'button_common': 'button_outline'}>{title}</button>
   )
 }
 
