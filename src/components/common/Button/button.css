@@ -1,7 +1,7 @@
 .button_common{
     background: #fe4141;
     color: white;
-    border: none;
+    border: 1px solid #fe4141;
     outline: none;
     border-radius: 5px;
     padding: 0.2rem 0.3rem;
