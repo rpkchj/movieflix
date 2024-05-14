@@ -6,6 +6,7 @@ import "./filterheader.css"
 const FilterHeader = () => {
   const flag = useRef(false)
   const [genres, setGenres] = useState([])
+  const [selectedGenres, setSelectedGenres] = useState([])
 
   const callToGetGenres = () => {
     getGenre().then(genre => {
@@ -23,7 +24,15 @@ const FilterHeader = () => {
   return (
     <div className='filter_header'>
       {genres.map(genre => {
-        return <Button title={genre.name}/>
+        const selectGenre =() => {
+          if(!selectedGenres.includes(genre.id)){
+            setSelectedGenres((prev) => [...prev, genre.id])
+          }else{
+            let tmp = selectedGenres.filter(genreID => genreID !== genre.id)
+            setSelectedGenres(tmp)
+          }
+        }
+        return <Button key={genre.id} title={genre.name} onButtonClick={selectGenre} isSelected={selectedGenres.includes(genre.id)}/>
       })}
     </div>
   )
