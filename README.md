@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# TO START THE PROJECT LOCALLY
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### After cloning the project, run "npm install" to install the necessary dependencies and run the command "npm start". That should get the project up and running.
 
-## Available Scripts
 
-In the project directory, you can run:
+# FEATURES COVERED:
 
-### `npm start`
+#### 1.Covered the infinite scrolling on up and down directions wherein up will load older movies and down will load new movies with respect to the current movie year on initial load, i.e 2012
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 2. Made the Genre filter wherein multiple genre filter selection is possible and the data list will get updated accordingly. API is called when the genres are selected.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 3. Total movie shown per year is 20 as mentioned in the requirements list.
 
-### `npm test`
+#### 4. Added a fade on the movie summary on card with a "view more" option which opens a browser alert stating the full movie summary.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# FEATURES NOT COVERED:
 
-### `npm run build`
+#### 1. Cast and director is not shown on the card as the API data did not include those properties.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 2. Search functionality got left out.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# SPECIAL MENTION:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### As for genres, when multiple genres are selected the data is coming all good but once infinite scroll is done, TMDb did not have an api to call older or newer movies whilst maintaining the current selected genres. Hence the solution I implemented is that when there is any genre is selected as a filter, as the filter API result contained movies from various timeframes, I stopped calling the ususal scroll APIs as that did not make sense. Once all filters are cleared the data is restored back to 2012 with normal functionality as before.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

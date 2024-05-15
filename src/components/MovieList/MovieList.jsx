@@ -25,6 +25,8 @@ const MovieList = () => {
 
   // this is to check if there are any selected genre(s) then set this flag and based on this do not call api because api doesn't have property to call old / new movies by year whilst maintaining the genre filters
   if(currentlySelectedGenres.length > 0){
+    PREV_YEAR = 2012
+    NEXT_YEAR = 2012
     IS_GENRE = true
   }else{
     IS_GENRE = false
@@ -55,6 +57,8 @@ const MovieList = () => {
         break;
     }
   };
+
+
 
   let lastScrollPosition = 0;
 

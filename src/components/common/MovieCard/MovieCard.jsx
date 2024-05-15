@@ -6,11 +6,6 @@ import { IoStarSharp } from "react-icons/io5";
 
 const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieGenre, releaseYear}) => {
 
-  const limitCharaters = (string, limit = 15) => {
-    return string.length < limit? string.substring(0, limit) :`${string.substring(0, limit)}...`;
-  };
-  
-
   return (
     <>
   <div class="cellphone-container">    
