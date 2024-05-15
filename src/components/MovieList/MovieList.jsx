@@ -13,14 +13,25 @@ import Loader from "../Loader/Loader";
 let PREV_YEAR = 2012;
 let NEXT_YEAR = 2012;
 
+let IS_GENRE = false
+
 const MovieList = () => {
   const dispatch = useDispatch();
   const flag = useRef(false);
+  const currentlySelectedGenres = useSelector(state => state.movieSlice.selectedGenres)
   const availableGenres = useSelector(state => state.movieSlice.genres)
   const movieList = useSelector((state) => state.movieSlice.movies);
   const [isLoading, setIsLoading] = useState(false);
 
+  // this is to check if there are any selected genre(s) then set this flag and based on this do not call api because api doesn't have property to call old / new movies by year whilst maintaining the genre filters
+  if(currentlySelectedGenres.length > 0){
+    IS_GENRE = true
+  }else{
+    IS_GENRE = false
+  }
+
   const callToGetMovies = (callFlag, movieYear) => {
+    
     setIsLoading(true);
 
     switch (callFlag) {
@@ -47,9 +58,11 @@ const MovieList = () => {
 
   let lastScrollPosition = 0;
 
+
   const handleScroll = () => {
     const currentScrollPosition =
       document.documentElement.scrollTop || document.body.scrollTop;
+      
 
     if (
       currentScrollPosition > lastScrollPosition &&
@@ -57,6 +70,7 @@ const MovieList = () => {
         document.documentElement.offsetHeight &&
       !isLoading
     ) {
+      if(IS_GENRE) return //if there are any selected genres do not call the prev year api. because the genre filter api does not have the property to fetch older data whilst maintaining the genre filter
       // Scrolling downwards
       let tmp = ++NEXT_YEAR;
       if (tmp > new Date().getFullYear()) return; //do not call api for years after current.
@@ -66,6 +80,7 @@ const MovieList = () => {
       currentScrollPosition === 0 &&
       !isLoading
     ) {
+      if(IS_GENRE) return //if there are any selected genres do not call the next year api. because the genre filter api does not have the property to fetch newer data whilst maintaining the genre filter
       // Scrolling upwards and reached the top
       callToGetMovies("Older", --PREV_YEAR);
     }
@@ -93,13 +108,20 @@ const MovieList = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
+     
       {movieList.map((movie) => {
-        // let constructedGenre="";
+        let constructedGenre="";
+        let {genre_ids} = movie
 
-        // movie.genre_ids.map(id => {
-
-        // })
+        genre_ids.map(id => {
+          // if condition just to make sure that the costructed genre does not have any trailing commas
+          if(genre_ids[genre_ids.length - 1] === id){
+            constructedGenre += `${availableGenres[id]}`
+          }else{
+            constructedGenre += `${availableGenres[id]},`
+          }
+        })
+        
 
         return (
           <MovieCard
@@ -107,13 +129,13 @@ const MovieList = () => {
             title={movie.title}
             movieBanner={movie.poster_path}
             popularity={movie.popularity}
-            release_year={movie.release_date.split("-")[0]}
+            releaseYear={movie.release_date.split("-")[0]}
             adultRating={adultRatings[movie.adult]}
-            // movieGenre={constructedGenre}
+            movieGenre={constructedGenre}
           />
         );
       })}
-      {isLoading && <Loader />}
+     
     </>
   );
 };

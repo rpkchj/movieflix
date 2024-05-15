@@ -4,7 +4,7 @@ import { IoStarSharp } from "react-icons/io5";
 
 
 
-const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieGenre}) => {
+const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieGenre, releaseYear}) => {
 
   const limitCharaters = (string, limit = 15) => {
     return string.length < limit? string.substring(0, limit) :`${string.substring(0, limit)}...`;
@@ -21,11 +21,11 @@ const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieG
         <div class="text-movie-cont">
           <div class="mr-grid">
             <div class="col1">
-              <h1 title={title}>{limitCharaters(title)}</h1>
+              <h1 title={title}>{title}</h1>
               <ul class="movie-gen">
+                <li>{releaseYear}  /</li>
                 <li>{adultRating}  /</li>
-                <li>2h 49min  /</li>
-                <li>{movieGenre}</li>
+                <li title={movieGenre}>{limitCharaters(movieGenre, 25)}</li>
               </ul>
             </div>
           </div>
