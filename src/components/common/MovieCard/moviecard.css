@@ -11,6 +11,8 @@
 	 box-shadow: 5px 5px 115px -14px black;
 	 border-radius: 4px;
 }
+
+
  .menu {
 	 position: absolute;
 	 right: 12px;
@@ -127,7 +129,7 @@
 }
  .movie-gen li, .movie-likes li {
 	 font-family: 'Open Sans', sans-serif;
-	 font-size: 12px;
+	 font-size: 10px;
 	 color: #818181;
 	 width: auto;
 	 display: block;

@@ -9,10 +9,10 @@ const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieG
   const limitCharaters = (string, limit = 15) => {
     return string.length < limit? string.substring(0, limit) :`${string.substring(0, limit)}...`;
   };
+  
 
   return (
     <>
-
   <div class="cellphone-container">    
       <div class="movie">       
         <div class="movie-img">
@@ -25,7 +25,7 @@ const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieG
               <ul class="movie-gen">
                 <li>{releaseYear}  /</li>
                 <li>{adultRating}  /</li>
-                <li title={movieGenre}>{limitCharaters(movieGenre, 25)}</li>
+                <li title={movieGenre} >{movieGenre}</li>
               </ul>
             </div>
           </div>
@@ -45,16 +45,15 @@ const MovieCard = ({title, summary, movieBanner, popularity, adultRating, movieG
               <p class="movie-description">{summary}</p>
             </div>
           </div>
-          {/* <div class="mr-grid actors-row">
+          <div class="mr-grid actors-row">
             <div class="col1">
-              <p class="movie-actors">Matthew McConaughey, Anne Hathaway, Jessica Chastain</p>
+              <p class="movie-actors" onClick={() => alert(summary)}>View More...</p>
             </div>
-          </div> */}
+          </div>
         
         </div>
       </div>
   </div>
-
 
 </>
   )
