@@ -1,6 +1,6 @@
 # TO START THE PROJECT LOCALLY
 
-#### After cloning the project, run "npm install" to install the necessary dependencies and run the command "npm start". That should get the project up and running.
+#### After cloning the project, run "npm install" to install the necessary dependencies and run the command "npm start". That should get the project up and running. If by any chance "npm install" fails, run "npm i -f" to do a forcefull install and that should do it.
 
 
 # FEATURES COVERED:
